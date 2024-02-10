@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "create-meme-telegram-bot"
+  },
+  "targets": {
+    "create-meme-telegram-bot": {
+      "hosting": {
+        "chat-app": [
+          "create-meme-telegram-bot"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

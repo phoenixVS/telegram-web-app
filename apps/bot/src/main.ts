@@ -1,14 +1,15 @@
-import express from 'express';
+import { Telegraf, Markup } from 'telegraf'
 
-const host = process.env.HOST ?? 'localhost';
-const port = process.env.PORT ? Number(process.env.PORT) : 3000;
+const token = '6896568845:AAG4rWUGl-k-YfZXbipCt-2v-47OQxGb-Qw'
+const webAppUrl = 'https://create-meme-telegram-bot.web.app/'
 
-const app = express();
+const bot = new Telegraf(token)
 
-app.get('/', (req, res) => {
-  res.send({ message: 'Hello API' });
-});
+bot.command('start', (ctx) => {
+  ctx.reply(
+    'Welcome! Press button to enter chat',
+    Markup.keyboard([Markup.button.webApp('Enter chat', webAppUrl)])
+  )
+})
 
-app.listen(port, host, () => {
-  console.log(`[ ready ] http://${host}:${port}`);
-});
+bot.launch()
